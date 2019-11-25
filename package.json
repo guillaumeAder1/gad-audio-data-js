@@ -1,0 +1,24 @@
+{
+  "name": "gad-audio-data",
+  "version": "0.0.0",
+  "description": "Stream audio data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guillaumeAder1/gad-audio-data-js.git"
+  },
+  "keywords": [
+    "web",
+    "audio",
+    "api"
+  ],
+  "author": "gader",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guillaumeAder1/gad-audio-data-js/issues"
+  },
+  "homepage": "https://github.com/guillaumeAder1/gad-audio-data-js#readme"
+}
