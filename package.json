@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "rm -rf dist/lib/",
     "build": "rollup -c --watch",
-    "dev": "serve",
+    "serve": "node scripts/server.js",
+    "dev": "npm run serve & npm run build",
     "reload": "./node_modules/.bin/livereload 'public/'"
   },
   "repository": {
@@ -30,11 +32,10 @@
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
-    "livereload": "^0.8.2",
+    "live-server": "^1.2.1",
     "rollup": "^1.27.5",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-watch": "^4.3.1",
-    "serve": "^11.2.0"
+    "rollup-watch": "^4.3.1"
   }
 }

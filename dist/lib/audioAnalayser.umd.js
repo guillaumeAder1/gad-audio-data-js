@@ -1,6 +1,6 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('core-js/modules/es6.regexp.split')) :
-  typeof define === 'function' && define.amd ? define(['core-js/modules/es6.regexp.split'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, global.AudioAnalyser = factory());
 }(this, (function () { 'use strict';
 
@@ -26,9 +26,6 @@
     return Constructor;
   }
 
-  // Enable LiveReload
-  document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1"></' + 'script>');
-
   var AudioAnalyser =
   /*#__PURE__*/
   function () {
@@ -42,6 +39,7 @@
       key: "init",
       value: function init() {
         console.log('inti test');
+        return 'Lib loaded as expected...';
       }
     }]);
 

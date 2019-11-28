@@ -11,8 +11,8 @@ export default {
     file:  `${path}/${name}.cjs.js`,
     format: 'cjs',
   }, {
-    file: `${path}/${name}.es.js`,
-    format: 'es'
+    file: `${path}/${name}.esm.js`,
+    format: 'esm'
   }, {
     file: `${path}/${name}.umd.js`,
     format: 'umd',
