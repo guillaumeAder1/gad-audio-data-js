@@ -8,7 +8,7 @@ export default class AudioAnalyser {
     console.log('test')
   }
   init() {
-    console.log('inti');
+    console.log('inti test');
 
   }
 }

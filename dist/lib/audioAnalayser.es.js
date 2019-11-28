@@ -1,6 +1,4 @@
-'use strict';
-
-require('core-js/modules/es6.regexp.split');
+import 'core-js/modules/es6.regexp.split';
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -39,11 +37,11 @@ function () {
   _createClass(AudioAnalyser, [{
     key: "init",
     value: function init() {
-      console.log('inti');
+      console.log('inti test');
     }
   }]);
 
   return AudioAnalyser;
 }();
 
-module.exports = AudioAnalyser;
+export default AudioAnalyser;

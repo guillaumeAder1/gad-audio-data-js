@@ -41,7 +41,7 @@
     _createClass(AudioAnalyser, [{
       key: "init",
       value: function init() {
-        console.log('inti');
+        console.log('inti test');
       }
     }]);
 
