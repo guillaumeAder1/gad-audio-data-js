@@ -7,11 +7,13 @@
   <title>Audio analayser demo</title>
 </head>
 <body>
-  <script src="lib/audioAnalayser.umd.js"></script>
+
+  
+  <script src="lib/bundle.umd.js"></script>
   <script>
     window.addEventListener('DOMContentLoaded', (event) => {
-      console.log('DOM fully loaded and parsed', AudioAnalyser);
-      const audioAnalayser = new AudioAnalyser();
+      console.log('DOM fully loaded and parsed', AudioTool);
+      const audioAnalayser = new AudioTool.AudioAnalyser();
       const txt = audioAnalayser.init();
       document.write('loaded-test ', txt )
     });

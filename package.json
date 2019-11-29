@@ -2,6 +2,7 @@
   "name": "gad-audio-data",
   "version": "0.0.0",
   "description": "Stream audio data",
+  "libname": "libname",
   "main": "dist/lib/audioAnalyser.cjs.js",
   "module": "dist/lib/audioAnalyser.esm.js",
   "browser": "dist/lib/audioAnalyser.umd.js",
