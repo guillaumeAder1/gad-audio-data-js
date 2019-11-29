@@ -27,8 +27,10 @@ function _createClass(Constructor, protoProps, staticProps) {
 var _default =
 /*#__PURE__*/
 function () {
-  function _default() {
+  function _default(params) {
     _classCallCheck(this, _default);
+
+    console.warn(params);
   }
 
   _createClass(_default, [{

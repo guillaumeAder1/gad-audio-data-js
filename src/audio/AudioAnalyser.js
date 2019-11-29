@@ -1,6 +1,6 @@
 export default class {
-  constructor() {
-    
+  constructor(params) {
+    console.warn(params);
   }
   init() {
     console.log('inti test');
