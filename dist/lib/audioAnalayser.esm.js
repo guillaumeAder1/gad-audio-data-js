@@ -20,24 +20,22 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
-var AudioAnalyser =
+var _default =
 /*#__PURE__*/
 function () {
-  function AudioAnalyser(params) {
-    _classCallCheck(this, AudioAnalyser);
-
-    console.log('test');
+  function _default() {
+    _classCallCheck(this, _default);
   }
 
-  _createClass(AudioAnalyser, [{
+  _createClass(_default, [{
     key: "init",
     value: function init() {
       console.log('inti test');
-      return 'Lib loaded as expected...';
+      return 'Lib loaded as expected...1';
     }
   }]);
 
-  return AudioAnalyser;
+  return _default;
 }();
 
-export default AudioAnalyser;
+export { _default as AudioAnalyser };

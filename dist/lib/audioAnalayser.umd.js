@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.AudioAnalyser = factory());
-}(this, (function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.AudioAnalyser = {}));
+}(this, (function (exports) { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -26,26 +26,26 @@
     return Constructor;
   }
 
-  var AudioAnalyser =
+  var _default =
   /*#__PURE__*/
   function () {
-    function AudioAnalyser(params) {
-      _classCallCheck(this, AudioAnalyser);
-
-      console.log('test');
+    function _default() {
+      _classCallCheck(this, _default);
     }
 
-    _createClass(AudioAnalyser, [{
+    _createClass(_default, [{
       key: "init",
       value: function init() {
         console.log('inti test');
-        return 'Lib loaded as expected...';
+        return 'Lib loaded as expected...1';
       }
     }]);
 
-    return AudioAnalyser;
+    return _default;
   }();
 
-  return AudioAnalyser;
+  exports.AudioAnalyser = _default;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
