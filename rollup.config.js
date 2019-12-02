@@ -1,6 +1,5 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
-import config from './package.json';
 // https://risanb.com/posts/bundling-your-javascript-library-with-rollup/
 // https://zellwk.com/blog/publish-to-npm/
 // full lib project: https://github.com/alex996/react-css-spinners
