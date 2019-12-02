@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "gad-audio-data": "file:../.."
+  },
+  "devDependencies": {
+    "express": "^4.17.1"
   }
 }
