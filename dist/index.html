@@ -10,6 +10,7 @@
 
   <audio
     id='audio'
+    controls
     crossOrigin='anonymous'
     src='assets/lowfi-loop.mp3'
   ></audio>
@@ -17,11 +18,15 @@
   <script>
     window.addEventListener('DOMContentLoaded', (event) => {
       const source = document.querySelector('audio');
-      console.log(source);
-      console.log('DOM fully loaded and parsed', AudioTool);
       const audioAnalayser = new AudioTool.AudioAnalyser({ source });
-      const txt = audioAnalayser.init();
-      document.write('loaded-test ', txt )
+      console.log('DOM fully loaded and parsed', AudioTool, source);
+      window.requestAnimationFrame(logFrequencies);
+
+      function logFrequencies() {
+        const data = audioAnalayser.getFrequencies();
+        console.log(data);
+        window.requestAnimationFrame(logFrequencies);
+      }
     });
   </script>
 </body>
