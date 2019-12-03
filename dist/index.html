@@ -8,12 +8,18 @@
 </head>
 <body>
 
-  
+  <audio
+    id='audio'
+    crossOrigin='anonymous'
+    src='assets/lowfi-loop.mp3'
+  ></audio>
   <script src="lib/bundle.umd.js"></script>
   <script>
     window.addEventListener('DOMContentLoaded', (event) => {
+      const source = document.querySelector('audio');
+      console.log(source);
       console.log('DOM fully loaded and parsed', AudioTool);
-      const audioAnalayser = new AudioTool.AudioAnalyser();
+      const audioAnalayser = new AudioTool.AudioAnalyser({ source });
       const txt = audioAnalayser.init();
       document.write('loaded-test ', txt )
     });

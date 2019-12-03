@@ -12,7 +12,7 @@
     "prebuild": "rm -rf dist/lib/",
     "build": "rollup -c --watch",
     "serve": "node scripts/server.js",
-    "dev": "npm run serve & npm run build",
+    "dev": "npm run build & npm run serve",
     "reload": "./node_modules/.bin/livereload 'public/'"
   },
   "repository": {
