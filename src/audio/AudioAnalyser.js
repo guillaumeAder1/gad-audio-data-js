@@ -9,8 +9,9 @@ export default class {
   }
   /**
    * @param {HTML5 Audio Element} player - audio element playing the song
+   * @param {Number} fft - frequency array size, 64 return array.length = 32
    */
-  createAnalyzer(player, fft = 64) {
+  createAnalyzer(player, fft = 32) {
     try {
       const context = new (window.AudioContext || window.webkitAudioContext)();
       const source = context.createMediaElementSource(player);
