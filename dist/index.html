@@ -18,15 +18,11 @@
   <script>
     window.addEventListener('DOMContentLoaded', (event) => {
       const source = document.querySelector('audio');
-      const audioAnalayser = new AudioTool.AudioAnalyser({ source });
+      const audioAnalayser = new AudioTool.AudioAnalyser(source);
+      audioAnalayser.getFrequencies(data => {
+        console.log('frequencies data', data);
+      })
       console.log('DOM fully loaded and parsed', AudioTool, source);
-      window.requestAnimationFrame(logFrequencies);
-
-      function logFrequencies() {
-        const data = audioAnalayser.getFrequencies();
-        console.log(data);
-        window.requestAnimationFrame(logFrequencies);
-      }
     });
   </script>
 </body>

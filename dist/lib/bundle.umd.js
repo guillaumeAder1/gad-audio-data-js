@@ -29,15 +29,16 @@
   var _default =
   /*#__PURE__*/
   function () {
-    function _default(params) {
+    function _default(source, fft) {
       _classCallCheck(this, _default);
 
-      if (!params && !params.source) {
+      if (!source) {
         throw 'Source is not defined';
       }
 
-      console.warn(params);
-      this.createAnalyzer(params.source, params.fft);
+      this.streamOn = true;
+      this.debug = false;
+      this.createAnalyzer(source, fft);
     }
     /**
      * @param {HTML5 Audio Element} player - audio element playing the song
@@ -48,19 +49,47 @@
       key: "createAnalyzer",
       value: function createAnalyzer(player) {
         var fft = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 64;
-        var context = new (window.AudioContext || window.webkitAudioContext)();
-        var source = context.createMediaElementSource(player);
-        this.analyser = context.createAnalyser();
-        this.analyser.fftSize = fft;
-        source.connect(this.analyser);
-        this.analyser.connect(context.destination);
-        this.frequencies = new Uint8Array(this.analyser.frequencyBinCount);
+
+        try {
+          var context = new (window.AudioContext || window.webkitAudioContext)();
+          var source = context.createMediaElementSource(player);
+          this.analyser = context.createAnalyser();
+          this.analyser.fftSize = fft;
+          source.connect(this.analyser);
+          this.analyser.connect(context.destination);
+          this.frequencies = new Uint8Array(this.analyser.frequencyBinCount);
+          this.debug && console.log('analyser created');
+        } catch (error) {
+          throw 'Audio context not supported';
+        }
       }
+      /**
+       * @param {Function} fn - callback function to get frequency from instance
+       */
+
     }, {
       key: "getFrequencies",
-      value: function getFrequencies() {
+      value: function getFrequencies(fn) {
+        this.callback = fn;
+        this.streamOn && window.requestAnimationFrame(this.getStream.bind(this));
+      }
+    }, {
+      key: "startStream",
+      value: function startStream() {
+        this.streamOn = true;
+      }
+    }, {
+      key: "stopStream",
+      value: function stopStream() {
+        this.streamOn = false;
+      }
+    }, {
+      key: "getStream",
+      value: function getStream() {
+        this.debug && console.log('call getStream');
+        this.streamOn && window.requestAnimationFrame(this.getStream.bind(this));
         this.analyser.getByteFrequencyData(this.frequencies);
-        return this.frequencies;
+        this.callback(this.frequencies);
       }
     }]);
 
