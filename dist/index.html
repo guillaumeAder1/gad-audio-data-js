@@ -7,23 +7,31 @@
   <title>Audio analayser demo</title>
 </head>
 <body>
+  <style>
+    canvas{
+      width: 500px;
+      height: 500px;
+    }
+  </style>
 
   <audio
     id='audio'
     controls
     src='assets/lowfi-loop.mp3'
   ></audio>
+  <canvas id='canvas'></canvas>
   <script src="lib/bundle.umd.js"></script>
   <script>
     window.addEventListener('DOMContentLoaded', (event) => {
       const source = document.querySelector('audio');
+      const canvas = document.querySelector('canvas');
+      const histo = new AudioTool.Histogram({canvas});
+      let audioAnalayser;
       source.addEventListener('play', () => {
-        const audioAnalayser = new AudioTool.AudioAnalyser(source);
-        audioAnalayser.getFrequencies(data => {
-          console.log('frequencies data', data);
-        });
+        audioAnalayser = new AudioTool.AudioAnalyser(source);
+        audioAnalayser.getFrequencies((data) => histo.draw(data));
       })
-      console.log('DOM fully loaded and parsed', AudioTool, source);
+      source.addEventListener('pause', () => audioAnalayser.stopStream())
     });
   </script>
 </body>
