@@ -4,8 +4,11 @@ export default class {
       throw 'Source is not defined';
     }
     this.streamOn = false;
-    this.debug = false;
+    this.debug = true;
     this.createAnalyzer(source, fft);
+  }
+  log(msg, type = 'log') {
+    this.debug && console[type](msg);
   }
   /**
    * @param {HTML5 Audio Element} player - audio element playing the song
@@ -20,27 +23,32 @@ export default class {
       source.connect(this.analyser);
       this.analyser.connect(context.destination);
       this.frequencies = new Uint8Array(this.analyser.frequencyBinCount);
-      this.debug && console.log('analyser created');
+      this.log('analyser created');
     } catch (error) {
-      throw 'Audio context not supported';
+      const msg = 'Audio context not supported';
+      this.log(msg,'warn');
+      throw msg;
     }
   }
   /**
    * @param {Function} fn - callback function to get frequency from instance
    */
   getFrequencies(fn) {
+    this.log('get frequencies');
     this.callback = fn;
     this.startStream();
   }
   startStream(){
+    this.log('start stream')
     this.streamOn = true;
     window.requestAnimationFrame(this.getStream.bind(this));
   }
   stopStream() {
+    this.log('stopStream');
     this.streamOn = false;
   }
   getStream(){
-    this.debug && console.log('call getStream');
+    this.log('call getStream');
     this.streamOn && window.requestAnimationFrame(this.getStream.bind(this));
     this.analyser.getByteFrequencyData(this.frequencies);
     this.callback(this.frequencies);

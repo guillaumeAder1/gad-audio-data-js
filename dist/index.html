@@ -23,17 +23,18 @@
   <script src="lib/bundle.umd.js"></script>
   <script>
     window.addEventListener('DOMContentLoaded', (event) => {
+      const { AudioAnalyser, Histogram } = AudioTool;
       const source = document.querySelector('audio');
       const canvas = document.querySelector('canvas');
-      const histo = new AudioTool.Histogram({canvas});
+      const histo = new Histogram({canvas});
       let audioAnalayser;
       source.addEventListener('play', () => {
         if(!audioAnalayser) {
-          audioAnalayser = new AudioTool.AudioAnalyser(source);
+          audioAnalayser = new AudioAnalyser(source);
         } else {
           audioAnalayser.startStream();
         }
-        audioAnalayser.getFrequencies((data) => histo.draw(data));
+        audioAnalayser.getFrequencies(data => histo.draw(data));
       })
       source.addEventListener('pause', () => audioAnalayser.stopStream())
     });
