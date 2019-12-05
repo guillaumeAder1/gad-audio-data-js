@@ -3,7 +3,7 @@ export default class {
     if (!source) {
       throw 'Source is not defined';
     }
-    this.streamOn = true;
+    this.streamOn = false;
     this.debug = false;
     this.createAnalyzer(source, fft);
   }
@@ -30,10 +30,11 @@ export default class {
    */
   getFrequencies(fn) {
     this.callback = fn;
-    this.streamOn && window.requestAnimationFrame(this.getStream.bind(this));
+    this.startStream();
   }
   startStream(){
     this.streamOn = true;
+    window.requestAnimationFrame(this.getStream.bind(this));
   }
   stopStream() {
     this.streamOn = false;

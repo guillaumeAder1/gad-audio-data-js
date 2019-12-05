@@ -28,7 +28,11 @@
       const histo = new AudioTool.Histogram({canvas});
       let audioAnalayser;
       source.addEventListener('play', () => {
-        audioAnalayser = new AudioTool.AudioAnalyser(source);
+        if(!audioAnalayser) {
+          audioAnalayser = new AudioTool.AudioAnalyser(source);
+        } else {
+          audioAnalayser.startStream();
+        }
         audioAnalayser.getFrequencies((data) => histo.draw(data));
       })
       source.addEventListener('pause', () => audioAnalayser.stopStream())
