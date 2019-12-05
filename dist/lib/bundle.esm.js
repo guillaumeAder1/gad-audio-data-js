@@ -32,7 +32,7 @@ function () {
       throw 'Source is not defined';
     }
 
-    this.streamOn = true;
+    this.streamOn = false;
     this.debug = false;
     this.createAnalyzer(source, fft);
   }
@@ -68,12 +68,13 @@ function () {
     key: "getFrequencies",
     value: function getFrequencies(fn) {
       this.callback = fn;
-      this.streamOn && window.requestAnimationFrame(this.getStream.bind(this));
+      this.startStream();
     }
   }, {
     key: "startStream",
     value: function startStream() {
       this.streamOn = true;
+      window.requestAnimationFrame(this.getStream.bind(this));
     }
   }, {
     key: "stopStream",
