@@ -33,16 +33,22 @@ function () {
     }
 
     this.streamOn = false;
-    this.debug = false;
+    this.debug = true;
     this.createAnalyzer(source, fft);
   }
-  /**
-   * @param {HTML5 Audio Element} player - audio element playing the song
-   * @param {Number} fft - frequency array size, 64 return array.length = 32
-   */
-
 
   _createClass(_default, [{
+    key: "log",
+    value: function log(msg) {
+      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'log';
+      this.debug && console[type](msg);
+    }
+    /**
+     * @param {HTML5 Audio Element} player - audio element playing the song
+     * @param {Number} fft - frequency array size, 64 return array.length = 32
+     */
+
+  }, {
     key: "createAnalyzer",
     value: function createAnalyzer(player) {
       var fft = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 32;
@@ -55,9 +61,11 @@ function () {
         source.connect(this.analyser);
         this.analyser.connect(context.destination);
         this.frequencies = new Uint8Array(this.analyser.frequencyBinCount);
-        this.debug && console.log('analyser created');
+        this.log('analyser created');
       } catch (error) {
-        throw 'Audio context not supported';
+        var msg = 'Audio context not supported';
+        this.log(msg, 'warn');
+        throw msg;
       }
     }
     /**
@@ -67,24 +75,27 @@ function () {
   }, {
     key: "getFrequencies",
     value: function getFrequencies(fn) {
+      this.log('get frequencies');
       this.callback = fn;
       this.startStream();
     }
   }, {
     key: "startStream",
     value: function startStream() {
+      this.log('start stream');
       this.streamOn = true;
       window.requestAnimationFrame(this.getStream.bind(this));
     }
   }, {
     key: "stopStream",
     value: function stopStream() {
+      this.log('stopStream');
       this.streamOn = false;
     }
   }, {
     key: "getStream",
     value: function getStream() {
-      this.debug && console.log('call getStream');
+      this.log('call getStream');
       this.streamOn && window.requestAnimationFrame(this.getStream.bind(this));
       this.analyser.getByteFrequencyData(this.frequencies);
       this.callback(this.frequencies);
