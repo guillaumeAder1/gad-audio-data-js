@@ -1,17 +1,26 @@
-import AudioAnaylser  from "./AudioAnalyser";
-let audio;
-let source;
+import AudioAnaylser from "./AudioAnalyser";
 
+const AudioContextMock = {
+  createMediaElementSource: (el) => ({
+    connect: () => {}
+  }),
+  createAnalyser: () => ({
+    connect: () => {},
+    frequencyBinCount: []
+  }),
+};
+let AudioContext = {};
+beforeEach(() => {
+  // window.AudioContext = () => AudioContextMock;
+});
 describe('AudioAnalyser', () => {
-  beforeEach(() => {
-  });
   it('should have a contructor', () => {
-    source = new Audio();
-    audio = new AudioAnaylser(source);
-    expect(audio).not.toBe(null);
+    const audio = new AudioAnaylser({});
+    expect(audio.createAnalyzer).toHaveBeenCalled();
+    // expect(audio).not.toBe(null);
   });
-  it('should return an error', () => {
-    const audio = new AudioAnaylser(source)
-    expect(audio).not.toBe(null);
-  });
+  // xit('should return an error', () => {
+  //   const audio = new AudioAnaylser(source)
+  //   expect(audio).not.toBe(null);
+  // });
 })
