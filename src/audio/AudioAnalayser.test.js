@@ -1,31 +1,44 @@
 import AudioAnalyser from './AudioAnalyser';
 // jest.mock('./AudioAnalyser');
 
-const mockCreateAnalyzer = jest.fn();
-AudioAnalyser.prototype.createAnalyzer = mockCreateAnalyzer;
-mockCreateAnalyzer.mockReturnValue(true);
 
 global.window = { requestAnimationFrame: jest.fn() };
 
 describe('AudioAnalyser', () => {
+  beforeEach(() => {
+    const mockCreateAnalyzer = jest.fn();
+    AudioAnalyser.prototype.createAnalyzer = mockCreateAnalyzer;
+    AudioAnalyser.prototype.startStream = jest.fn();
+    AudioAnalyser.prototype.getStream = jest.fn();
+    mockCreateAnalyzer.mockReturnValue(true);
+  });
   it('should create an AudioAnalyser class', () => {
     const audio = new AudioAnalyser({});
     expect(audio).not.toBe(null);
     expect(audio.callback).toEqual(undefined)
     expect(audio.debug).toEqual(true)
     expect(audio.createAnalyzer).toHaveBeenCalled();
-    // expect(audio.createAnalyzer()).toEqual(true);
   });
-  it('getFrequencies should create callback function', () => {
+  it('getFrequencies should create callback function and call startStream', () => {
     const audio = new AudioAnalyser({});
     const fn = () => 'test';
     expect(audio.streamOn).toEqual(false);
     audio.getFrequencies(fn);
     expect(audio.callback()).toEqual('test');
-    expect(audio.streamOn).toEqual(true);
+    expect(audio.startStream).toHaveBeenCalled();
   });
-  // xit('should return an error', () => {
-  //   const audio = new AudioAnaylser(source)
-  //   expect(audio).not.toBe(null);
-  // });
+  it('callback should return value passed in getFrequencies', () => {
+    const audio = new AudioAnalyser({});
+    audio.getFrequencies(() => [1,2,3]);
+    expect(audio.callback()).toEqual([1,2,3])
+  }); 
 });
+describe('test props', () => {
+
+  it('should call getStream', () => {
+    const audio = new AudioAnalyser({});
+    expect(audio.streamOn).toEqual(false);
+    console.log(audio.startStream())
+    expect(audio.streamOn).toEqual(true);
+  })
+})

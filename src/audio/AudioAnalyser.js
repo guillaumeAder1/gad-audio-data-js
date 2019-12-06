@@ -34,7 +34,7 @@ export default class {
    * @param {Function} fn - callback function to get frequency from instance
    */
   getFrequencies(fn) {
-    this.log('get frequencies');
+    this.log('get frequencies data');
     this.callback = fn;
     this.startStream();
   }
