@@ -8,7 +8,6 @@ module.exports = {
     "/node_modules/"
   ],
   setupFiles: [
-    '<rootDir>/jest.setup'
+    '<rootDir>/tests/jest.setup'
   ],
-  automock: true
 };

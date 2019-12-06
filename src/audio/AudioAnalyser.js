@@ -17,13 +17,13 @@ export default class {
   createAnalyzer(player, fft = 32) {
     try {
       const context = new (window.AudioContext || window.webkitAudioContext)();
-      // const source = context.createMediaElementSource(player);
-      // this.analyser = context.createAnalyser();
-      // this.analyser.fftSize = fft;
-      // source.connect(this.analyser);
-      // this.analyser.connect(context.destination);
-      // this.frequencies = new Uint8Array(this.analyser.frequencyBinCount);
-      // this.log('analyser created');
+      const source = context.createMediaElementSource(player);
+      this.analyser = context.createAnalyser();
+      this.analyser.fftSize = fft;
+      source.connect(this.analyser);
+      this.analyser.connect(context.destination);
+      this.frequencies = new Uint8Array(this.analyser.frequencyBinCount);
+      this.log('analyser created');
     } catch (error) {
       const msg = 'Audio context not supported';
       this.log(msg,'warn');
