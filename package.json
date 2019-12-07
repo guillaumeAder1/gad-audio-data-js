@@ -8,7 +8,7 @@
   "browser": "dist/lib/bundle.umd.js",
   "sideEffects": false,
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "prebuild": "rm -rf dist/lib/",
     "build": "rollup -c --watch",
     "serve": "node scripts/server.js",

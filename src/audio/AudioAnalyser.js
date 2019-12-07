@@ -1,10 +1,10 @@
 export default class {
-  constructor(source, fft) {
+  constructor(source, fft, debug) {
     if (!source) {
       throw Error('Source is not defined');
     }
     this.streamOn = false;
-    this.debug = true;
+    this.debug = debug || false;
     this.createAnalyzer(source, fft);
   }
   log(msg, type = 'log') {

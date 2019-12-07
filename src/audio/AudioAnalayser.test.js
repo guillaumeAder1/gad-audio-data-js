@@ -16,7 +16,6 @@ describe('AudioAnalyser', () => {
     const audio = new AudioAnalyser({});
     expect(audio).not.toBe(null);
     expect(audio.callback).toEqual(undefined)
-    expect(audio.debug).toEqual(true)
     expect(audio.createAnalyzer).toHaveBeenCalled();
   });
   it('getFrequencies should create callback function and call startStream', () => {
@@ -38,7 +37,5 @@ describe('test props', () => {
   it('should call getStream', () => {
     const audio = new AudioAnalyser({});
     expect(audio.streamOn).toEqual(false);
-    console.log(audio.startStream())
-    expect(audio.streamOn).toEqual(true);
   })
 })
