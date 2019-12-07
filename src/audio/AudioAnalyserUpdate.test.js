@@ -34,8 +34,7 @@ describe('AudioAnalyser', () => {
     const audio = new AudioAnalyser({});
     expect(audio.callback).toBe(undefined);
     const fn = (val) => val;
-    // console.log(audio.getFrequencies(fn))
-    // console.log(audio.frequencies);
+    audio.getFrequencies(fn);
     expect(audio.callback).toBe(fn);
     expect(audio.callback(3)).toEqual(3);
   });
