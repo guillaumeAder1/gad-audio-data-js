@@ -1,7 +1,7 @@
 export default class {
   constructor(source, fft) {
     if (!source) {
-      throw 'Source is not defined';
+      throw Error('Source is not defined');
     }
     this.streamOn = false;
     this.debug = true;
