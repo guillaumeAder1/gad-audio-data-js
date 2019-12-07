@@ -7,9 +7,16 @@ import expectExport from 'expect';
 //   AudioContext: AudioContextMock
 // };
 const canvasMock = {
-  getContext: jest.fn(),
+  getContext: () => ({
+    clearRect: jest.fn(),
+    fillStyle: jest.fn(),
+    fillRect: jest.fn(),
+    beginPath: jest.fn(),
+    rect: jest.fn(),
+    stroke: jest.fn(),
+  }),
   width: 255,
-  height: 255
+  height: 255,
 }
 describe('Histogram', () => {
   it('should create instance as expected', () => {

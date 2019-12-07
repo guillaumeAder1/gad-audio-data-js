@@ -32,13 +32,13 @@ export default class {
         ctx.beginPath();
         ctx.lineWidth = "2";
         ctx.strokeStyle = this.color;
-        const pos = this.calculatePosition(ctx, align, step, i, data[i]);
+        const pos = this.calculatePosition(align, step, i, data[i]);
         ctx.rect(pos.x, pos.y, pos.width, pos.height);
         // ctx.rect(i * step, this.calcY(data[i]), step, height);
         ctx.stroke();
     }
   }
-  calculatePosition(ctx, align, step, index, value) {
+  calculatePosition(align, step, index, value) {
     let res;
     switch (align) {
       case 'bottom':
