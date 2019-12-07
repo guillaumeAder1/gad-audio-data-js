@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "modules": false,
+        "useBuiltIns": "usage",
+        "targets": {
+          "node": "4"
+        }
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "presets": ["@babel/env"] 
+    }
+  }
+}

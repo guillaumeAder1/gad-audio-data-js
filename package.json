@@ -1,0 +1,49 @@
+{
+  "name": "gad-audio-data",
+  "version": "0.0.0",
+  "description": "Stream audio data",
+  "libname": "libname",
+  "main": "dist/lib/bundle.cjs.js",
+  "module": "dist/lib/bundle.esm.js",
+  "browser": "dist/lib/bundle.umd.js",
+  "sideEffects": false,
+  "scripts": {
+    "test": "jest",
+    "prebuild": "rm -rf dist/lib/",
+    "build": "rollup -c --watch",
+    "serve": "node scripts/server.js",
+    "dev": "npm run build & npm run serve",
+    "reload": "./node_modules/.bin/livereload 'public/'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guillaumeAder1/gad-audio-data-js.git"
+  },
+  "keywords": [
+    "web",
+    "audio",
+    "api"
+  ],
+  "author": "gader",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guillaumeAder1/gad-audio-data-js/issues"
+  },
+  "homepage": "https://github.com/guillaumeAder1/gad-audio-data-js#readme",
+  "dependencies": {
+    "lodash-es": "^4.17.15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@testing-library/jest-dom": "^4.2.4",
+    "eslint": "^6.7.1",
+    "eslint-plugin-jest": "^23.1.1",
+    "jest": "^24.9.0",
+    "live-server": "^1.2.1",
+    "rollup": "^1.27.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-watch": "^4.3.1"
+  }
+}

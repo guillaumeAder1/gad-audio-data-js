@@ -1,0 +1,19 @@
+{
+  "name": "ssr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gad-audio-data": "file:../.."
+  },
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}

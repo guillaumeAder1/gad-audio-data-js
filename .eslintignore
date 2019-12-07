@@ -1,0 +1,14 @@
+coverage
+
+dist
+
+build
+
+node_modules
+
+storybook-static
+
+examples
+
+# jest.config.js
+# *.test.js
