@@ -26,7 +26,7 @@
       const { AudioAnalyser, Histogram } = AudioTool;
       const source = document.querySelector('audio');
       const canvas = document.querySelector('canvas');
-      const histo = new Histogram({canvas});
+      const histo = new Histogram(canvas);
       let audioAnalayser;
       source.addEventListener('play', () => {
         if(!audioAnalayser) {

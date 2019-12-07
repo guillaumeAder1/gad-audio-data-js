@@ -1,0 +1,30 @@
+import Histogram from './Histogram';
+import { JestEnvironment } from '@jest/environment';
+import expectExport from 'expect';
+
+// global.window = { 
+//   requestAnimationFrame: jest.fn(),
+//   AudioContext: AudioContextMock
+// };
+const canvasMock = {
+  getContext: jest.fn(),
+  width: 255,
+  height: 255
+}
+describe('Histogram', () => {
+  it('should create instance as expected', () => {
+    const histo = new Histogram(canvasMock);
+    expect(histo).not.toBe(null);
+    expect(histo.align).toBe('bottom');
+  });
+  it('should set width adn height based on canvas size', () => {
+    const histo = new Histogram(canvasMock);
+    histo.setCanvasSize(canvasMock);
+    expect(histo.width).toEqual(255);
+    expect(histo.height).toEqual(255); 
+  });
+  it('shoudl calculate position for bottom', () => {
+    const histo = new Histogram(canvasMock);
+    histo.draw([255, 100, 0]);
+  })
+});
