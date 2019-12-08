@@ -51,6 +51,6 @@ export default class {
     this.log('call getStream');
     this.streamOn && window.requestAnimationFrame(this.getStream.bind(this));
     this.analyser.getByteFrequencyData(this.frequencies);
-    this.callback(this.frequencies);
+    return this.callback(this.frequencies);
   }
 }

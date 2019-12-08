@@ -9,8 +9,10 @@ describe('AudioAnalyser', () => {
   it('should create instance as expected', () => {
     const audio = new AudioAnalyser({});
     expect(audio).not.toBe(null);
-    expect(audio.streamOn).toBe(false);
-    expect(audio.callback).toBe(undefined);
+    expect(audio.streamOn).toEqual(false);
+    expect(audio.callback).toEqual(undefined)
+
+    expect(audio.callback).toEqual(undefined);
   });
   it('should return an error if params is invalid', () => {
     expect(() => new AudioAnalyser()).toThrow('Source is not defined');
@@ -37,5 +39,12 @@ describe('AudioAnalyser', () => {
     audio.getFrequencies(fn);
     expect(audio.callback).toBe(fn);
     expect(audio.callback(3)).toEqual(3);
+  });
+  it('geStream should return frequencies as Uint8Array', () => {
+    const audio = new AudioAnalyser({});
+    audio.getFrequencies(val => val)
+    const res = audio.getStream();
+    expect(res.join('')).toEqual('123')
+    expect(res).toEqual(new Uint8Array([1,2,3]))
   });
 });
