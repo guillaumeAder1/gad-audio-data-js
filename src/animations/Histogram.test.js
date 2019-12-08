@@ -1,6 +1,4 @@
 import Histogram from './Histogram';
-import { JestEnvironment } from '@jest/environment';
-import expectExport from 'expect';
 
 // global.window = { 
 //   requestAnimationFrame: jest.fn(),
@@ -33,5 +31,6 @@ describe('Histogram', () => {
   it('shoudl calculate position for bottom', () => {
     const histo = new Histogram(canvasMock);
     histo.draw([255, 100, 0]);
+    expect(histo).not.toBe(null);
   })
 });

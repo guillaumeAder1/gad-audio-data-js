@@ -8,6 +8,8 @@
   "browser": "dist/lib/bundle.umd.js",
   "sideEffects": false,
   "scripts": {
+    "lint": "eslint 'src/**/*.js'",
+    "lint:fix": "prettier-eslint 'src/**/*.js' --write",
     "test": "jest --watchAll",
     "test:build": "jest",
     "prebuild": "rm -rf dist/lib/",
@@ -42,6 +44,8 @@
     "eslint-plugin-jest": "^23.1.1",
     "jest": "^24.9.0",
     "live-server": "^1.2.1",
+    "prettier-eslint": "^9.0.1",
+    "prettier-eslint-cli": "^5.0.0",
     "rollup": "^1.27.5",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-node-resolve": "^5.2.0",
