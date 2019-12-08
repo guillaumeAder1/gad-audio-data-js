@@ -25,8 +25,8 @@
     "audio",
     "api"
   ],
-  "author": "gader",
-  "license": "ISC",
+  "author": "guillaume.ader",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/guillaumeAder1/gad-audio-data-js/issues"
   },
