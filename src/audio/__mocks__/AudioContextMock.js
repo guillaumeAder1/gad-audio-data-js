@@ -1,16 +1,14 @@
 export default class AudioContextMock {
-  constructor() {
-
-  }
-  createMediaElementSource() { 
+  createMediaElementSource () {
     return {
       connect: () => {}
     }
   }
-  createAnalyser() { 
+
+  createAnalyser () {
     return {
       connect: () => {},
-      frequencyBinCount: [1,2,3],
+      frequencyBinCount: [1, 2, 3],
       getByteFrequencyData: () => {}
     }
   }
