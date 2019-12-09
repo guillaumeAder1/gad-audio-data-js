@@ -1,2 +1,2 @@
-export * from './audio';
-export * from './animations';
+export * from './audio'
+export * from './animations'
