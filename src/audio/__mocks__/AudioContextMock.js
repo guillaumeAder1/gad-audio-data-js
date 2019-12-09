@@ -8,7 +8,7 @@ export default class AudioContextMock {
   createAnalyser () {
     return {
       connect: () => {},
-      frequencyBinCount: [1, 2, 3],
+      frequencyBinCount: [300, 150, 0],
       getByteFrequencyData: () => {}
     }
   }
