@@ -18,6 +18,12 @@
     "dev": "npm run build & npm run serve",
     "reload": "./node_modules/.bin/livereload 'public/'"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test && npm run lint"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/guillaumeAder1/visual-web-audio-api.git"
@@ -48,6 +54,7 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "husky": "^3.1.0",
     "jest": "^24.9.0",
     "live-server": "^1.2.1",
     "prettier-eslint": "^9.0.1",
