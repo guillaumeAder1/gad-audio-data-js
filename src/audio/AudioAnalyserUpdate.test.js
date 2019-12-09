@@ -40,11 +40,11 @@ describe('AudioAnalyser', () => {
     expect(audio.callback).toBe(fn)
     expect(audio.callback(3)).toEqual(3)
   })
-  it('geStream should return frequencies as Uint8Array', () => {
+  it('geStream should return frequencies as Uint8Array in a callback function', () => {
     const audio = new AudioAnalyser({})
-    audio.getFrequencies(val => val)
-    const res = audio.getStream()
-    expect(res.join('')).toEqual('123')
-    expect(res).toEqual(new Uint8Array([1, 2, 3]))
+    audio.getFrequencies(res => {
+      expect(res.join('')).toEqual('123')
+      expect(res).toEqual(new Uint8Array([1, 2, 3]))
+    })
   })
 })
