@@ -1,5 +1,5 @@
 {
-  "name": "gad-audio-data",
+  "name": "visual-web-audio-api",
   "version": "0.0.0",
   "description": "Stream audio data",
   "libname": "libname",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guillaumeAder1/gad-audio-data-js.git"
+    "url": "git+https://github.com/guillaumeAder1/visual-web-audio-api.git"
   },
   "keywords": [
     "web",
@@ -30,9 +30,9 @@
   "author": "guillaume.ader",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/guillaumeAder1/gad-audio-data-js/issues"
+    "url": "https://github.com/guillaumeAder1/visual-web-audio-api/issues"
   },
-  "homepage": "https://github.com/guillaumeAder1/gad-audio-data-js#readme",
+  "homepage": "https://github.com/guillaumeAder1/visual-web-audio-api#readme",
   "dependencies": {
     "lodash-es": "^4.17.15"
   },
