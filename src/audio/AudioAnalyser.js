@@ -46,7 +46,6 @@ export default class {
     this.log('start stream')
     this.streamOn = true
     window.requestAnimationFrame(this.getStream.bind(this))
-    console.log('asdfkjhsd')
   }
 
   stopStream () {

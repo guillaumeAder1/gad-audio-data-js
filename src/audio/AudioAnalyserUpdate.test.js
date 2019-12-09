@@ -41,7 +41,7 @@ describe('AudioAnalyser', () => {
     expect(audio.callback(3)).toEqual(3)
   })
   it('geStream should return frequencies as Uint8Array', () => {
-    const audio = new AudioAnalyser({})
+    const audio = new AudioAnalyser()
     audio.getFrequencies(val => val)
     const res = audio.getStream()
     expect(res.join('')).toEqual('123')
