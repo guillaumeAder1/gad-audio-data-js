@@ -26,11 +26,18 @@ describe('Histogram', () => {
   })
   describe('shoudl calculate position for bottom align', () => {
     it('shoudl call calculate position for every item recevied as [data]', () => {
-      Histogram.prototype.calculatePosition = jest.fn()
+      Histogram.prototype.calculatePosition = jest.fn(() => ({
+        x: 2,
+        y: 2,
+        width: 2,
+        height: 2
+      }))
       const histo = new Histogram(canvasMock)
       histo.draw([150, 0, 300])
-      // expect(histo.calculatePosition).to
-      expect(histo).not.toBe(null)
+      expect(histo.calculatePosition).toHaveBeenCalledTimes(3)
+      Histogram.prototype.calculatePosition.mockClear()
+      histo.draw([1, 2, 3, 4, 5, 6])
+      expect(histo.calculatePosition).toHaveBeenCalledTimes(6)
     })
   })
 })
