@@ -11,7 +11,7 @@
     "lint": "eslint 'src/'",
     "lint:fix": "prettier-eslint 'src/**/*.js' --write",
     "test": "jest --watchAll",
-    "test:build": "jest",
+    "test:push": "jest",
     "prebuild": "rm -rf dist/lib/",
     "build": "rollup -c --watch",
     "serve": "node scripts/server.js",
@@ -21,7 +21,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
-      "pre-push": "npm run test && npm run lint"
+      "pre-push": "npm run test:push && npm run lint"
     }
   },
   "repository": {
