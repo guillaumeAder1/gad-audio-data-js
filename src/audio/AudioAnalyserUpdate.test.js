@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-mocks-import */
 import AudioAnalyser from './AudioAnalyser';
 import AudioContextMock from './__mocks__/AudioContextMock';
 
