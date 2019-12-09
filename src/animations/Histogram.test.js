@@ -9,8 +9,8 @@ const canvasMock = {
     rect: jest.fn(),
     stroke: jest.fn()
   }),
-  width: 255,
-  height: 255
+  width: 300,
+  height: 300
 }
 describe('Histogram', () => {
   it('should create instance as expected', () => {
@@ -21,12 +21,16 @@ describe('Histogram', () => {
   it('should set width adn height based on canvas size', () => {
     const histo = new Histogram(canvasMock)
     histo.setCanvasSize(canvasMock)
-    expect(histo.width).toEqual(255)
-    expect(histo.height).toEqual(255)
+    expect(histo.width).toEqual(300)
+    expect(histo.height).toEqual(300)
   })
-  it('shoudl calculate position for bottom', () => {
-    const histo = new Histogram(canvasMock)
-    histo.draw([255, 100, 0])
-    expect(histo).not.toBe(null)
+  describe('shoudl calculate position for bottom align', () => {
+    it('shoudl call calculate position for every item recevied as [data]', () => {
+      Histogram.prototype.calculatePosition = jest.fn()
+      const histo = new Histogram(canvasMock)
+      histo.draw([150, 0, 300])
+      // expect(histo.calculatePosition).to
+      expect(histo).not.toBe(null)
+    })
   })
 })

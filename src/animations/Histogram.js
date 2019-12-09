@@ -24,7 +24,7 @@ export default class {
   }
 
   draw (data) {
-    const { ctx, width, height, align } = this
+    const { ctx, width, height } = this
     const step = width / data.length
     ctx.clearRect(0, 0, width, height)
     ctx.fillStyle = this.background
@@ -34,16 +34,16 @@ export default class {
       ctx.beginPath()
       ctx.lineWidth = '2'
       ctx.strokeStyle = this.color
-      const pos = this.calculatePosition(align, step, i, data[i])
+      const pos = this.calculatePosition(step, i, data[i])
       ctx.rect(pos.x, pos.y, pos.width, pos.height)
       // ctx.rect(i * step, this.calcY(data[i]), step, height);
       ctx.stroke()
     }
   }
 
-  calculatePosition (align, step, index, value) {
+  calculatePosition (step, index, value) {
     let res
-    switch (align) {
+    switch (this.align) {
       case 'bottom':
         res = {
           x: index * step,
