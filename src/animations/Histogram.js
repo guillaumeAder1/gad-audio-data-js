@@ -34,9 +34,8 @@ export default class {
       ctx.beginPath()
       ctx.lineWidth = '2'
       ctx.strokeStyle = this.color
-      const pos = this.calculatePosition(step, i, data[i])
-      ctx.rect(pos.x, pos.y, pos.width, pos.height)
-      // ctx.rect(i * step, this.calcY(data[i]), step, height);
+      const { x, y, width, height } = this.calculatePosition(step, i, data[i])
+      ctx.rect(x, y, width, height)
       ctx.stroke()
     }
   }
@@ -48,8 +47,8 @@ export default class {
         res = {
           x: index * step,
           y: this.height - (this.height * (value / this.max)),
-          width: step,
-          height: this.height
+          height: this.height,
+          width: step
         }
         break
 
