@@ -1,15 +1,20 @@
 export default class {
-  constructor (canvas, align = 'bottom', options = {
-    stroke: 'red',
-    background: 'black',
-    name: 'histogram'
-  }) {
+  constructor (
+    canvas,
+    align = 'bottom',
+    options = {
+      stroke: 'red',
+      background: 'black',
+      name: 'histogram'
+    }
+  ) {
+    this.defaultAlign = ['top', 'bottom', 'left', 'right']
     this.ctx = canvas.getContext('2d')
     this.max = 255
     this.color = options.stroke
     this.name = options.name
     this.background = options.background
-    this.align = align
+    this._align = align
     this.setCanvasSize(canvas)
   }
 
@@ -18,9 +23,19 @@ export default class {
     this.height = canvas.height
   }
 
-  calcY (val) {
-    const perc = val / this.max
-    return this.height - (this.height * perc)
+  set align (value) {
+    if (this.defaultAlign.includes(value)) {
+      this._align = value
+    } else {
+      throw Error(
+        `Error: incorrect value: [${value}] is not a allowed, 
+        use one of [${this.defaultAlign.join(', ')}] instead`
+      )
+    }
+  }
+
+  get align () {
+    return this._align
   }
 
   draw (data) {
@@ -42,12 +57,20 @@ export default class {
 
   calculatePosition (step, index, value) {
     let res
-    switch (this.align) {
+    switch (this._align) {
       case 'bottom':
         res = {
           x: index * step,
-          y: this.height - (this.height * (value / this.max)),
+          y: this.height - this.height * (value / this.max),
           height: this.height,
+          width: step
+        }
+        break
+      case 'top':
+        res = {
+          x: index * step,
+          y: 0,
+          height: this.height - this.height * (value / this.max),
           width: step
         }
         break
@@ -58,7 +81,5 @@ export default class {
     return res
   }
 
-  destroy () {
-
-  }
+  destroy () {}
 }

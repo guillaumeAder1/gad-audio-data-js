@@ -29,11 +29,18 @@ describe('Histogram', () => {
     expect(histo).not.toBe(null)
     expect(histo.align).toBe('bottom')
   })
-  it('should set width adn height based on canvas size', () => {
+  it('should set width and height based on canvas size', () => {
     const histo = new Histogram(canvasMock)
     histo.setCanvasSize(canvasMock)
     expect(histo.width).toEqual(300)
     expect(histo.height).toEqual(300)
+  })
+  it('should set align value if correct', () => {
+    const histo = new Histogram(canvasMock)
+    expect(() => (histo.align = 'top')).not.toThrow()
+    expect(histo.align).toEqual('top')
+    expect(() => (histo.align = '')).toThrow()
+    expect(histo.align).toEqual('top')
   })
   describe('should calculate position', () => {
     it('shoudl call calculate position for every item recevied as [data]', () => {

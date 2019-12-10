@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Audio analayser demo</title>
-</head>
-<body>
-  <style>
-    canvas{
-      width: 500px;
-      height: 500px;
-    }
-  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Audio analayser demo</title>
+  </head>
+  <body>
+    <style>
+      canvas {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
 
-  <audio
-    id='audio'
-    controls
-    src='assets/lowfi-loop.mp3'
-  ></audio>
-  <canvas id='canvas'></canvas>
-  <script src="lib/bundle.umd.js"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-      const { AudioAnalyser, Histogram } = AudioTool;
-      const source = document.querySelector('audio');
-      const canvas = document.querySelector('canvas');
-      const histo = new Histogram(canvas);
-      let audioAnalayser;
-      source.addEventListener('play', () => {
-        if(!audioAnalayser) {
-          audioAnalayser = new AudioAnalyser(source);
-        } else {
-          audioAnalayser.startStream();
-        }
-        audioAnalayser.getFrequencies(data => histo.draw(data));
-      })
-      source.addEventListener('pause', () => audioAnalayser.stopStream())
-    });
-  </script>
-</body>
+    <audio id="audio" controls src="assets/lowfi-loop.mp3"></audio>
+    <canvas id="canvas"></canvas>
+    <script src="lib/bundle.umd.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", event => {
+        const { AudioAnalyser, Histogram } = AudioTool;
+        const source = document.querySelector("audio");
+        const canvas = document.querySelector("canvas");
+        const histo = new Histogram(canvas);
+        histo.align = "top";
+        let audioAnalayser;
+        source.addEventListener("play", () => {
+          if (!audioAnalayser) {
+            audioAnalayser = new AudioAnalyser(source);
+          } else {
+            audioAnalayser.startStream();
+          }
+          audioAnalayser.getFrequencies(data => histo.draw(data));
+        });
+        source.addEventListener("pause", () => audioAnalayser.stopStream());
+      });
+    </script>
+  </body>
 </html>
