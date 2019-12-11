@@ -1,17 +1,8 @@
+/* eslint-disable jest/no-mocks-import */
 import Histogram from './Histogram'
+import mock from './__mocks__/canvasMock'
 
-const canvasMock = {
-  getContext: () => ({
-    clearRect: jest.fn(),
-    fillStyle: jest.fn(),
-    fillRect: jest.fn(),
-    beginPath: jest.fn(),
-    rect: jest.fn(),
-    stroke: jest.fn()
-  }),
-  width: 300,
-  height: 300
-}
+const canvasMock = mock
 const mockCalculate = jest.fn(() => ({
   x: 2,
   y: 2,
