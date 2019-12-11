@@ -14,7 +14,7 @@
       }
     </style>
 
-    <audio id="audio" controls src="assets/lowfi-loop.mp3"></audio>
+    <audio id="audio" loop controls src="assets/acid-loop.wav"></audio>
     <canvas id="canvas"></canvas>
     <script src="lib/bundle.umd.js"></script>
     <script>
@@ -23,7 +23,7 @@
         const source = document.querySelector("audio");
         const canvas = document.querySelector("canvas");
         const histo = new Histogram(canvas);
-        // histo.align = "top";
+        histo.align = "top";
         let audioAnalayser;
         source.addEventListener("play", () => {
           if (!audioAnalayser) {

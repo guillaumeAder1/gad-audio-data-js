@@ -49,7 +49,11 @@ export default class {
       ctx.beginPath()
       ctx.lineWidth = '2'
       ctx.strokeStyle = this.color
-      const { x, y, width, height } = this.calculatePosition(barWidth, i, data[i])
+      const { x, y, width, height } = this.calculatePosition(
+        barWidth,
+        i,
+        data[i]
+      )
       ctx.rect(x, y, width, height)
       ctx.stroke()
     }
@@ -61,7 +65,7 @@ export default class {
       case 'bottom':
         res = {
           x: index * step,
-          y: this.height - (this.height * (value / this.max)),
+          y: this.height - this.height * (value / this.max),
           width: step,
           height: this.height
         }
@@ -70,7 +74,7 @@ export default class {
         res = {
           x: index * step,
           y: 0,
-          height: this.height - (value / this.max),
+          height: this.height * (value / this.max),
           width: step
         }
         break

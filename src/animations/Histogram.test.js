@@ -49,23 +49,40 @@ describe('Histogram', () => {
       expect(histo.calculatePosition).toHaveBeenCalledWith(100, 2, 0)
     })
     describe('calculate bottom pos', () => {
-      it('calculate postion should return y=0 && height=300 when value is 0', () => {
+      it('should return y=0 && height=300 when value is 255', () => {
         const histo = new Histogram(canvasMock)
         const calculate = histo.calculatePosition(100, 0, 255)
-        expect(histo.align).toBe('bottom')
         expect(calculate.x).toBe(0)
         expect(calculate.y).toBe(0)
         expect(calculate.width).toBe(100)
         expect(calculate.height).toBe(300)
       })
-      it('calculate postion should return y=300 && height=300 when value is 0', () => {
+      it('should return y=300 && height=300 when value is 0', () => {
         const histo = new Histogram(canvasMock)
         const calculate = histo.calculatePosition(100, 0, 0)
-        expect(histo.align).toBe('bottom')
         expect(calculate.x).toBe(0)
         expect(calculate.y).toBe(300)
         expect(calculate.width).toBe(100)
         expect(calculate.height).toBe(300)
+      })
+    })
+    describe('calculate top pos', () => {
+      it('should return y=0 && height=300 when value is 255', () => {
+        const histo = new Histogram(canvasMock, 'top')
+        const calculate = histo.calculatePosition(100, 0, 255)
+        expect(histo.align).toBe('top')
+        expect(calculate.x).toBe(0)
+        expect(calculate.y).toBe(0)
+        expect(calculate.width).toBe(100)
+        expect(calculate.height).toBe(300)
+      })
+      it('should return y=0 && height=0 when value is 0', () => {
+        const histo = new Histogram(canvasMock, 'top')
+        const calculate = histo.calculatePosition(100, 0, 0)
+        expect(calculate.x).toBe(0)
+        expect(calculate.y).toBe(0)
+        expect(calculate.width).toBe(100)
+        expect(calculate.height).toBe(0)
       })
     })
   })
