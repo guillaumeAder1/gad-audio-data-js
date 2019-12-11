@@ -28,7 +28,7 @@ export default class {
       this._align = value
     } else {
       throw Error(
-        `Error: incorrect value: [${value}] is not a allowed, 
+        `Error: incorrect align value: [${value}] is not a allowed, 
         use one of [${this.defaultAlign.join(', ')}] instead`
       )
     }
@@ -40,7 +40,7 @@ export default class {
 
   draw (data) {
     const { ctx, width, height } = this
-    const step = width / data.length
+    const barWidth = width / data.length
     ctx.clearRect(0, 0, width, height)
     ctx.fillStyle = this.background
     ctx.fillRect(0, 0, width, height)
@@ -49,7 +49,7 @@ export default class {
       ctx.beginPath()
       ctx.lineWidth = '2'
       ctx.strokeStyle = this.color
-      const { x, y, width, height } = this.calculatePosition(step, i, data[i])
+      const { x, y, width, height } = this.calculatePosition(barWidth, i, data[i])
       ctx.rect(x, y, width, height)
       ctx.stroke()
     }
@@ -61,16 +61,16 @@ export default class {
       case 'bottom':
         res = {
           x: index * step,
-          y: this.height - this.height * (value / this.max),
-          height: this.height,
-          width: step
+          y: this.height - (this.height * (value / this.max)),
+          width: step,
+          height: this.height
         }
         break
       case 'top':
         res = {
           x: index * step,
           y: 0,
-          height: this.height - this.height * (value / this.max),
+          height: this.height - (value / this.max),
           width: step
         }
         break
