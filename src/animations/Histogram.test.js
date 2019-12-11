@@ -9,11 +9,7 @@ const mockCalculate = jest.fn(() => ({
   height: 2,
   width: 3
 }))
-const original = Histogram.prototype.calculatePosition
-Histogram.prototype.calculatePosition = mockCalculate
-beforeEach(() => {
-  mockCalculate.mockClear()
-})
+
 describe('Histogram', () => {
   it('should create instance as expected', () => {
     const histo = new Histogram(canvasMock)
@@ -36,6 +32,7 @@ describe('Histogram', () => {
   describe('should calculate position', () => {
     it('shoudl call calculate position for every item recevied as [data]', () => {
       const histo = new Histogram(canvasMock)
+      histo.calculatePosition = mockCalculate
       histo.draw([150, 0, 300])
       expect(histo.calculatePosition).toHaveBeenCalledTimes(3)
       mockCalculate.mockClear()
@@ -44,6 +41,7 @@ describe('Histogram', () => {
     })
     it('should call calculate position with correct argument', () => {
       const histo = new Histogram(canvasMock, 'bottom')
+      histo.calculatePosition = mockCalculate
       const data = [300, 150, 0]
       histo.draw(data)
       expect(histo.calculatePosition).toHaveBeenCalledWith(100, 0, 300)
@@ -51,7 +49,6 @@ describe('Histogram', () => {
       expect(histo.calculatePosition).toHaveBeenCalledWith(100, 2, 0)
     })
     it('should calculate postion as expected', () => {
-      Histogram.prototype.calculatePosition = original
       const histo = new Histogram(canvasMock)
       const calculate = histo.calculatePosition(100, 0, 300)
       console.log(calculate)
