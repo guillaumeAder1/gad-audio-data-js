@@ -38,9 +38,13 @@ export default class {
     return this._align
   }
 
+  calculateBarSize (length) {
+    return this._align === 'top' || this._align === 'bottom' ? this.width / length : this.height / length
+  }
+
   draw (data) {
     const { ctx, width, height } = this
-    const barWidth = width / data.length
+    const barSize = this.calculateBarSize(data.length)
     ctx.clearRect(0, 0, width, height)
     ctx.fillStyle = this.background
     ctx.fillRect(0, 0, width, height)
@@ -49,11 +53,12 @@ export default class {
       ctx.beginPath()
       ctx.lineWidth = '2'
       ctx.strokeStyle = this.color
-      const { x, y, width, height } = this.calculatePosition(
-        barWidth,
-        i,
-        data[i]
-      )
+      const {
+        x,
+        y,
+        width,
+        height
+      } = this.calculatePosition(barSize, i, data[i])
       ctx.rect(x, y, width, height)
       ctx.stroke()
     }
@@ -78,7 +83,22 @@ export default class {
           width: step
         }
         break
-
+      case 'left':
+        res = {
+          x: 0,
+          y: index * step,
+          height: step,
+          width: this.width * (value / this.max)
+        }
+        break
+      case 'right':
+        res = {
+          x: this.width - this.width * (value / this.max),
+          y: index * step,
+          height: step,
+          width: this.width
+        }
+        break
       default:
         break
     }
