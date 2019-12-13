@@ -39,7 +39,8 @@ export default class {
   }
 
   calculateBarSize (length) {
-    return this._align === 'top' || this._align === 'bottom' ? this.width / length : this.height / length
+    const vertical = this._align === 'top' || this._align === 'bottom'
+    return vertical ? this.width / length : this.height / length
   }
 
   draw (data) {
@@ -48,10 +49,9 @@ export default class {
     ctx.clearRect(0, 0, width, height)
     ctx.fillStyle = this.background
     ctx.fillRect(0, 0, width, height)
-    // start drawing bars
     for (var i = 0; i < data.length; i++) {
       ctx.beginPath()
-      ctx.lineWidth = '2'
+      ctx.lineWidth = '1'
       ctx.strokeStyle = this.color
       const {
         x,

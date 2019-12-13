@@ -1,8 +1,7 @@
 /* eslint-disable jest/no-mocks-import */
 import Histogram from './Histogram'
-import mock from './__mocks__/canvasMock'
+import canvasMock from './__mocks__/canvasMock'
 
-const canvasMock = mock
 const mockCalculate = jest.fn(() => ({
   x: 2,
   y: 2,
