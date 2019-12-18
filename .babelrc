@@ -5,6 +5,8 @@
       {
         "modules": false,
         "useBuiltIns": "usage",
+        "forceAllTransforms": true,
+        "corejs": 3,
         "targets": {
           "node": "4"
         }
